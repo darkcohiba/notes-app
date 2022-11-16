@@ -14,8 +14,15 @@ const log = console.log;
 yargs.command({
     command: 'add',
     describe: 'Add a new note',
-    handler: function() {
-        log('Adding a new note');
+    builder: {
+        title: {
+            describe: 'Title of the note',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: function(argv) {
+        log('Adding a new note', argv);
     }
 });
 

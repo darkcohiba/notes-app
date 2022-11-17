@@ -1,6 +1,7 @@
 const validator = require('validator')
 const chalk = require('chalk')
 const yargs = require('yargs')
+const fs = require('fs')
 
 const log = console.log;
 
@@ -19,10 +20,15 @@ yargs.command({
             describe: 'Title of the note',
             demandOption: true,
             type: 'string'
+        },
+        body: {
+            describe: 'Body of the note',
+            demandOption: true,
+            type: 'string'
         }
     },
     handler: function(argv) {
-        log('Adding a new note', argv);
+        log('Title: ' + argv.title + '\nBody: ' + argv.body);
     }
 });
 
@@ -55,5 +61,4 @@ yargs.command({
 
 
 // add, read, remove, list
-
-log(yargs.argv);
+yargs.parse()
